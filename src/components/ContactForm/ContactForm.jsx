@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import { PropTypes } from 'prop-types';
-// import { nanoid } from 'nanoid';
 
 import Box from '../Box/Box';
 import { LabelNameStyle } from './ContactForm.styled';
