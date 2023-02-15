@@ -25,7 +25,7 @@ const ContactForm = () => {
       const data = { name, number };
 
       // data.id = nanoid();
-      // console.log(data);
+      console.log(e);
       // dispatch(addContactAction(data));
 
       dispatch(addContact(data));
@@ -49,6 +49,7 @@ const ContactForm = () => {
   const onChangeName = e => {
     const { value } = e.currentTarget;
     setName(value);
+    console.log(e);
   };
 
   const onChangeNumber = e => {

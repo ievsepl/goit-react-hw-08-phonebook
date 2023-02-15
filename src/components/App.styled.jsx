@@ -1,11 +1,13 @@
 import styled from '@emotion/styled';
+// import { NavLink } from 'react-router-dom';
 
 export const AppStyle = styled.div`
-  // height:100vh;
+  min-height: 100vh;
+  // width:350px
   display: flex;
-  // justifyContent:center;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  // flex-direction: column;
+  // align-items: center;
   //   fontSize:px;
   color: #010101;
   //   background-color: green;

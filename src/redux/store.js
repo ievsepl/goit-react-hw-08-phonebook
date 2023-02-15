@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {
-  // persistStore,
+  persistStore,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -13,11 +13,14 @@ import { contactsInitState } from './contacts/contacts.init-state';
 import { filterInitState } from 'redux/filter/filter.init-state';
 import { contactReducer } from './contacts/contacts.slice';
 import { filterReducer } from './filter/filter.slice';
+import { initAuthData } from './auth/auth.intit-state';
+import { authPersistReducer } from './auth/auth.slice';
 // import axios from 'axios';
 
 const initState = {
   contacts: contactsInitState,
   filter: filterInitState,
+  auth: initAuthData,
 };
 
 export const store = configureStore({
@@ -25,6 +28,8 @@ export const store = configureStore({
   reducer: {
     contacts: contactReducer,
     filter: filterReducer,
+    // auth: authReducer,
+    auth: authPersistReducer,
   },
   devTools: true,
 
@@ -35,3 +40,5 @@ export const store = configureStore({
       },
     }),
 });
+
+export const persistor = persistStore(store);
