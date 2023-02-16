@@ -14,7 +14,8 @@ const authHandlePending = state => {
 };
 const handleRejected = (state, action) => {
   // state.isLoggedIn = false;
-  state.error = action.payload;
+  // state.error = action.payload;
+  return state;
 };
 const authSlice = createSlice({
   name: 'auth',
@@ -54,7 +55,7 @@ const authSlice = createSlice({
       .addCase(refreshUser.pending, authHandlePending)
       .addCase(refreshUser.rejected, handleRejected)
       .addCase(refreshUser.fulfilled, (state, actions) => {
-        state.user = actions.payload.user;
+        state.user = actions.payload;
         state.isLoggedIn = true;
       });
   },

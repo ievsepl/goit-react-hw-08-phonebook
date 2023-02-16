@@ -7,6 +7,7 @@ import { Header, Link, Container, UserParams } from './SharedLayout.styled';
 export const SharedLayout = () => {
   const loggedIn = useSelector(selectIsLoggedInState);
   // const dispatch = useDispatch();
+  // const loggedIn = false;
 
   return (
     <Container>

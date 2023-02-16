@@ -7,16 +7,20 @@ import { Login } from 'pages/Login/Login';
 import { Home } from 'pages/Home/Home';
 import { SignIn } from 'pages/SignIn/SignIn';
 import { SharedLayout } from './SharedLayout/SharedLayout';
-// import { Phonebook } from 'pages/Phonebook/Phonebook';
+import { Phonebook } from 'pages/Phonebook/Phonebook';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/operations';
-import { selectIsRefreshingState } from 'redux/auth/auth.selectors';
-
+import {
+  selectIsLoggedInState,
+  selectIsRefreshingState,
+} from 'redux/auth/auth.selectors';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
 export const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshingState);
-
+  const loggedIn = useSelector(selectIsLoggedInState);
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
@@ -39,11 +43,22 @@ export const App = () => {
     <AppStyle>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          {/* <Route index element={<Phonebook />} /> */}
-          <Route index element={<Home />} />
+          <Route
+            index
+            element={<PrivateRoute component={Phonebook} redirectTo="/Login" />}
+          />
 
-          <Route path="/Login" element={<Login />} />
-          <Route path="/SignIn" element={<SignIn />} />
+          {/* <Route index element={!loggedIn ? <Home /> : <Phonebook />} /> */}
+          {/* <Route index element={<Home />} /> */}
+
+          <Route
+            path="/Login"
+            element={<RestrictedRoute component={Login} redirectTo="/" />}
+          />
+          <Route
+            path="/SignIn"
+            element={<RestrictedRoute component={SignIn} redirectTo="/" />}
+          />
           {/* <Route path="/Phonebook" element={<Phonebook />} /> */}
 
           {/* <h2>Contacts</h2>

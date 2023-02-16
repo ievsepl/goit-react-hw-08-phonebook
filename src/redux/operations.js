@@ -61,8 +61,8 @@ export const refreshUser = createAsyncThunk(
     if (!state.token) {
       return thunkAPI.rejectWithValue('no valid message');
     }
-    // clearAuthHeader();
-    setAuthHeader();
+    clearAuthHeader();
+    // setAuthHeader();
     try {
       const resp = await axios.get('/users/current');
       return resp.data;
