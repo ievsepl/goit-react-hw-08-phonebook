@@ -2,8 +2,10 @@ import styled from '@emotion/styled';
 
 export const ItemStyle = styled.li`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   //   border: 1px solid red;
+  align-items: center;
+
   margin: 10px;
 `;
 

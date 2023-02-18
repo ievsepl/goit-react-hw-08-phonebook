@@ -13,15 +13,17 @@ export const SharedLayout = () => {
     <Container>
       <Header>
         {/* <h1>Phonebook</h1> */}
-        <Link to="/">Home</Link>
         {loggedIn ? (
-          <div className="">
+          <>
+            {' '}
+            <Link to="/contacts">Contact list</Link>
+            <Link to="/addContact">Add contact</Link>
             <UserMenu />
-          </div>
+          </>
         ) : (
           <UserParams>
-            <Link to="/Login">Login</Link>
-            <Link to="/SignIn">Registration</Link>
+            <Link to="/login">Login</Link>
+            <Link to="/signIn">Registration</Link>
           </UserParams>
         )}
 

@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const Header = styled.header`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
   gap: 12px;
   padding: 8px 0;
   margin-bottom: 16px;
@@ -29,4 +29,5 @@ export const Link = styled(NavLink)`
 `;
 export const UserParams = styled.div`
   display: flex;
+  margin-left: auto;
 `;

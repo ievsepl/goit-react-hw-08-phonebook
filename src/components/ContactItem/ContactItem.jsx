@@ -1,3 +1,5 @@
+import Button from '@mui/material/Button';
+
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useMemo } from 'react';
 // import { PropTypes } from 'prop-types';
@@ -64,10 +66,21 @@ const ContactItem = () => {
               </Box>
               <span>{number}</span>
             </ContactStyle>
-
-            <button type="button" onClick={() => deleteContact(id)}>
+            <Button
+              variant="contained"
+              size="small"
+              style={{
+                backgroundColor: 'orangered',
+                textTransform: 'capitalize',
+              }}
+              type="button"
+              onClick={() => deleteContact(id)}
+            >
               Delete
-            </button>
+            </Button>
+            {/* <button type="button" onClick={() => deleteContact(id)}>
+              Delete
+            </button> */}
           </ItemStyle>
         );
       })}

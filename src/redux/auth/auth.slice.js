@@ -52,11 +52,16 @@ const authSlice = createSlice({
         state.token = null;
       });
     builder
-      .addCase(refreshUser.pending, authHandlePending)
-      .addCase(refreshUser.rejected, handleRejected)
+      .addCase(refreshUser.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshUser.rejected, state => {
+        state.isRefreshing = false;
+      })
       .addCase(refreshUser.fulfilled, (state, actions) => {
         state.user = actions.payload;
         state.isLoggedIn = true;
+        state.isRefreshing = false;
       });
   },
 });
